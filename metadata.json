@@ -1,0 +1,5 @@
+{
+  "name": "Belasting Betalingskenmerk Hulp",
+  "description": "Tool voor het omzetten van aanslagnummers naar betalingskenmerken voor diverse belastingen (VpB, BTW, LB, IB) en het genereren van klant-e-mails.",
+  "requestFramePermissions": []
+}
