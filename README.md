@@ -1,81 +1,48 @@
 # BetalingskenmerkHulp
 
-A browser-based tool that converts Dutch tax assessment numbers (aanslagnummers) into payment references (betalingskenmerken) and generates draft emails for clients.
+Convert Dutch tax assessment numbers (*aanslagnummers*) into payment references (*betalingskenmerken*) and generate ready-to-send client emails — all inside your browser.
 
-**Live:** [https://kingoftheace2.github.io/belastingkenmerk-hulp/](https://kingoftheace2.github.io/belastingkenmerk-hulp/)
+> **Try it live:** [kingoftheace2.github.io/belastingkenmerk-hulp](https://kingoftheace2.github.io/belastingkenmerk-hulp/)
+
+---
 
 ## Features
 
-- Convert aanslagnummers to betalingskenmerken (supports VpB, BTW, LB and IB)
-- Auto-calculate payment deadlines (6 weeks - 1 day)
-- Generate draft client emails in Dutch and English
-- All processing happens locally in the browser — no data is stored or sent anywhere
+- **Aanslagnummer → betalingskenmerk** conversion with Mod-11 check digit (VpB, BTW, LB, IB)
+- **Payment deadline** auto-calculated from the assessment date (6 weeks - 1 day)
+- **Draft emails** in Dutch and English, ready to copy-paste
+- **100 % client-side** — no data leaves your browser
 
-## Run Locally
-
-**Prerequisites:** Node.js
+## Getting Started
 
 ```bash
 npm install
-npm run dev
+npm run dev        # → http://localhost:3000
 ```
 
-The app runs at `http://localhost:3000`.
-
-## Deploy to GitHub Pages
-
-The project uses Vite and is configured to deploy to GitHub Pages.
-
-1. Build the production bundle:
-   ```bash
-   npm run build
-   ```
-2. The output is in the `dist/` folder, ready to be served as a static site.
-
-To automate deployment, add a GitHub Actions workflow (see below) or use `gh-pages`:
+## Build
 
 ```bash
-npm install -D gh-pages
-npx gh-pages -d dist
+npm run build      # output in dist/
+npm run preview    # preview the production build locally
 ```
 
-### GitHub Actions workflow
+## Deployment (GitHub Pages)
 
-Create `.github/workflows/deploy.yml`:
+The repository includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that builds and deploys automatically on every push to `main`.
 
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm install
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - uses: actions/deploy-pages@v4
-```
-
-Then enable GitHub Pages in your repo settings under **Pages → Source → GitHub Actions**.
+To enable it, go to **Settings → Pages → Source** and select **GitHub Actions**.
 
 ## Tech Stack
 
-- React 19, TypeScript, Vite
-- Tailwind CSS v4
-- Framer Motion (via `motion`)
-- Lucide React icons
+| Layer | Tech |
+|-------|------|
+| UI | React 19, TypeScript |
+| Styling | Tailwind CSS v4 |
+| Animations | Motion (Framer Motion) |
+| Icons | Lucide React |
+| Build | Vite |
+
+## License
+
+Apache-2.0
